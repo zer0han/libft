@@ -10,16 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int ft_isdigit(int nb)
 {
     if (nb >= '0' && nb <= '9')
         return (1);
     else
         return (0);
-}
-
-#include <stdio.h>
-int main(void)
-{
-    
 }

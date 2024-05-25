@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 char    *ft_strnstr(const char *str, const char *find, size_t len)
 {
@@ -34,14 +34,4 @@ char    *ft_strnstr(const char *str, const char *find, size_t len)
         i++;
     }
     return (0);
-}
-
-#include <stdio.h>
-int main(void)
-{
-    const char	str[] = "FIND THIS IN THIS.";
-	const char	find[] = "T";
-
-	printf("%s", ft_strnstr(str, find, 6));
-	return (0);
 }

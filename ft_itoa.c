@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	num_len(int n)
 {
@@ -56,20 +56,3 @@ char	*ft_itoa(int n)
 		result[0] = '-';
 	return (result);
 }
-
-/*#include <stdio.h>
-
-int main() 
-{
-    int test_cases[] = {123, -123, 0, 2147483647, -2147483648};
-    for (int i = 0; i < 5; i++) {
-        char *result = ft_itoa(test_cases[i]);
-        if (result) {
-            printf("ft_itoa(%d) = %s\n", test_cases[i], result);
-            free(result);
-        } else {
-            printf("Memory allocation failed for ft_itoa(%d)\n", test_cases[i]);
-        }
-    }
-    return 0;
-}*/

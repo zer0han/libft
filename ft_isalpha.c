@@ -10,26 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int ft_isalpha(int c)
 {
     if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
         return (1);
     else
         return (0);
-}
-
-#include <stdio.h>
-int main(void)
-{
-    char *str = "bkl21";
-    if(ft_isalpha(str))
-    {
-        printf("string has alphabets. \n");
-    }
-    else
-    {
-        printf("string contains non-alphabet characters");
-    }
-    return (0);
-
 }
