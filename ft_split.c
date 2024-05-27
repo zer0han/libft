@@ -51,9 +51,21 @@ static char	*ft_strndup(char const *s, int n)
 		dest[i] = s[i];
 		i++;
 	}
-
 	dest[i] = '\0';
 	return (dest);
+}
+
+static void	free_split(char **split)
+{
+	char	**temp;
+
+	temp = split;
+	while (*temp)
+	{
+		free(*temp);
+		temp++;
+	}
+	free(split);
 }
 
 char	**ft_split(char const *s, char c)
@@ -62,15 +74,12 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		start;
 	int		word_index;
-	int		word_count;
 
 	i = 0;
-	start = 0;
 	word_index = 0;
-	word_count = (ft_word_count(s, c) + 1);
 	if (!s)
 		return (NULL);
-	result = (char **)malloc((word_count) * sizeof(char *));
+	result = (char **)malloc((ft_word_count(s, c) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	while (s[i])
@@ -83,9 +92,7 @@ char	**ft_split(char const *s, char c)
 			result[word_index] = ft_strndup(s + start, i - start);
 			if (!result[word_index])
 			{
-				while (word_index > 0)
-					free (result[--word_index]);
-				free (result);
+				free_split(result);
 				return (NULL);
 			}
 			word_index++;
@@ -97,18 +104,7 @@ char	**ft_split(char const *s, char c)
 	return (result);
 }
 
-void free_split(char **split) 
-{
-    int i = 0;
-    while (split[i])
-	{
-        free(split[i]);
-        i++;
-    }
-    free(split);
-}
-
-/*#include <stdio.h>
+#include <stdio.h>
 
 int main() {
     char **result;
@@ -163,4 +159,4 @@ int main() {
     }
 
     return 0;
-}*/
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdalal <rdalal@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdalal <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 13:23:59 by rdalal            #+#    #+#             */
-/*   Updated: 2024/05/25 13:23:59 by rdalal           ###   ########.fr       */
+/*   Created: 2024/05/27 14:48:58 by rdalal            #+#    #+#             */
+/*   Updated: 2024/05/27 14:49:00 by rdalal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ t_list	*ft_lstlast(t_list *lst)
 {
 	while (lst)
 	{
-		if (lst -> next = NULL)
+		if (lst)
+		{
+			lst -> next = NULL;
 			return (lst);
+		}
 		lst = lst -> next;
 	}
 	return (lst);

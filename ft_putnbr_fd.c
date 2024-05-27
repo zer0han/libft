@@ -17,7 +17,7 @@ static void	ft_putchar(char c, int fd)
 	write(fd, &c, 1);
 }
 
-void	ft_putnbr_fd(int n , int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	long	nbr;
 
@@ -34,14 +34,4 @@ void	ft_putnbr_fd(int n , int fd)
 	}
 	else
 		ft_putchar(nbr + '0', fd);
-}
-
-#include <stdio.h>
-int	main(void)
-{
-	int n = "1234567890";
-
-	ft_putnbr_fd("TEST: ", 1);
-	printf("%d\n", ft_putnbr_fd);
-	return (0);
 }

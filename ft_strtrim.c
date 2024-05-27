@@ -52,12 +52,11 @@ static int	ft_len_set(const char *str, const char *set)
 	return (count_set);
 }
 
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*result;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -66,7 +65,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	while (s1[i] != '\0')
 	{
-		if(ft_set(s1[i], &set[i]))
+		if (ft_set(s1[i], &set[i]))
 		{
 			result[j] = s1[i];
 			j++;
@@ -75,15 +74,4 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	result[j] = '\0';
 	return (result);
-}
-#include <stdio.h>
-int	main(void)
-{
-	char const	s1[] = "THIS SHIT WORKS THIS";
-	char const	set[] = "THIS";
-	char	*result = ft_strtrim(s1, set);
-
-	printf("OK: %s", result);
-	free (result);
-	return (0);
 }

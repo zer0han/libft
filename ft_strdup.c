@@ -25,6 +25,7 @@ static char	*ft_strcpy(char *dest, char *src)
 	dest[i] = '\0';
 	return (dest);
 }
+
 char	*ft_strdup(char *s)
 {
 	char	*dest;
@@ -34,5 +35,4 @@ char	*ft_strdup(char *s)
 		return (NULL);
 	ft_strcpy(dest, s);
 	return (dest);
-
 }

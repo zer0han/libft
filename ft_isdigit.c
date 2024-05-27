@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-int ft_isdigit(int nb)
+int	ft_isdigit(int nb)
 {
-    if (nb >= '0' && nb <= '9')
-        return (1);
-    else
-        return (0);
+	if (nb >= '0' && nb <= '9')
+		return (1);
+	else
+		return (0);
 }

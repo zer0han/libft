@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 static int	num_len(int n)
 {
@@ -29,16 +29,12 @@ static int	num_len(int n)
 
 char	*ft_itoa(int n)
 {
-	int		len;
-	int		neg;
-	unsigned int		nbr;
-	char	*result;
+	int				len;
+	unsigned int	nbr;
+	char			*result;
 
 	len = num_len(n);
-	neg = 0;
 	if (n < 0)
-		neg = 1;
-	if (neg)
 		nbr = -n;
 	else
 		nbr = n;
@@ -52,7 +48,7 @@ char	*ft_itoa(int n)
 		result [len -1] = nbr % 10 + '0';
 		nbr /= 10;
 	}
-	if (neg)
+	if (n < 1)
 		result[0] = '-';
 	return (result);
 }

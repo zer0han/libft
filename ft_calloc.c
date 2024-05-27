@@ -6,16 +6,16 @@
 /*   By: rdalal <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 19:50:33 by rdalal            #+#    #+#             */
-/*   Updated: 2024/05/20 19:50:34 by rdalal           ###   ########.fr       */
+/*   Updated: 2024/05/27 16:41:50 by rdalal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
+	int				i;
 	unsigned char	*pntr;
-	int	i;
 
 	if (size < 1 || nmemb < 1)
 		return (NULL);
