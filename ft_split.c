@@ -54,21 +54,6 @@ static char	*ft_strndup(char const *s, int n)
 	dest[i] = '\0';
 	return (dest);
 }
-/*void	ft_alloc(const char *s, char c, char **result)
-{
-	int	i;
-	int	start;
-	int	word_index;
-
-	i = 0;
-	word_index = 0;
-	if (s[i] != c)
-	{
-		start = i;
-		while (s[i] && (s[i] != c))
-	}
-
-}*/
 
 char	**ft_split(char const *s, char c)
 {
@@ -79,8 +64,6 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	word_index = 0;
-	if (!s)
-		return (NULL);
 	result = (char **)malloc((ft_word_count(s, c) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
@@ -97,11 +80,11 @@ char	**ft_split(char const *s, char c)
 		else
 			i++;
 	}
-	result[word_index] = NULL;
+		result[word_index] = NULL;
 	return (result);
 }
 
-void	free_split(char **split)
+/*void	free_split(char **split)
 {
 	char	**temp;
 
@@ -168,5 +151,21 @@ int main(void) {
         printf("Memory allocation failed\n");
     }
 
+	// Test case 4
+    char str4[] = "";
+    char delimiter4 = 'y';
+    printf("\nTest case 4:\nInput: \"%s\" Delimiter: '%c'\n", str4, delimiter4);
+    result = ft_split(str4, delimiter4);
+    if (result) {
+        i = 0;
+        while (result[i]) {
+            printf("Result[%d]: \"%s\"\n", i, result[i]);
+            i++;
+        }
+        free_split(result);
+    } else {
+        printf("Memory allocation failed\n");
+    }
+
     return 0;
-}
+}*/

@@ -14,8 +14,8 @@
 
 char	ft_strrchr(char *str, int c)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = -1;
@@ -23,11 +23,11 @@ char	ft_strrchr(char *str, int c)
 	{
 		if (str[i] == c)
 			j = i;
-		i ++;
+		i++;
 	}
 	if (str [i] == c)
 		j = i;
 	if (j == -1)
 		return (0);
-	return (&str[j]);
+	return (str[j]);
 }

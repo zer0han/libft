@@ -12,16 +12,6 @@
 
 #include "libft.h"
 
-static int	ft_strlen(const char	*str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
 static int	ft_set(char c, const char *set)
 {
 	int	i;

@@ -46,7 +46,7 @@ size_t	ft_strlcpy(char *dst, char *src, size_t l);
 
 void	ft_bzero(void *s, size_t n);
 
-void	*calloc(size_t nmemb, size_t size);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 void	*ft_memchr(const void *str, int c, size_t n);
 

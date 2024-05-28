@@ -12,21 +12,11 @@
 
 #include "libft.h"
 
-static size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
 void	ft_putendl_fd(char *s, int fd)
 {
 	if (s)
 	{
 		write (fd, s, ft_strlen(s));
-		write(fd, '\n', 1);
+		write (fd, "\n", 1);
 	}
 }

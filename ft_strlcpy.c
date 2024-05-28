@@ -23,9 +23,9 @@ size_t	ft_strlcpy(char *dst, char *src, size_t l)
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
+	/*dst[i] = '\0';
 	j = 0;
 	while (src[j] != '\0')
 		j++;
-	return (j);
+	return (j);*/
 }
