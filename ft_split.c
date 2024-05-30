@@ -55,6 +55,20 @@ static char	*ft_strndup(char const *s, int n)
 	return (dest);
 }
 
+static void	free_split(char **split, int word_all)
+{
+	int	i;
+
+	i = 0;
+	while (i < word_all)
+	{
+		if (split[i])
+			free (split[i]);
+		i++;
+	}
+	free (split);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
@@ -75,6 +89,11 @@ char	**ft_split(char const *s, char c)
 			while (s[i] && (s[i] != c))
 				i++;
 			result[word_index] = ft_strndup(s + start, i - start);
+			if (!result[word_index])
+			{
+				free_split(result, word_index);
+				return (NULL);
+			}
 			word_index++;
 		}	
 		else
@@ -84,20 +103,7 @@ char	**ft_split(char const *s, char c)
 	return (result);
 }
 
-/*void	free_split(char **split)
-{
-	char	**temp;
-
-	temp = split;
-	while (*temp)
-	{
-		free(*temp);
-		temp++;
-	}
-	free(split);
-}
-
-#include <stdio.h>
+/*#include <stdio.h>
 
 int main(void) {
     char **result;

@@ -50,8 +50,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*result;
 
 	tot_len = ft_strlen(s1) + ft_strlen(s2);
-	if (tot_len < 1)
-		return (NULL);
 	result = (char *)malloc(tot_len + 1);
 	if (!result)
 		return (NULL);

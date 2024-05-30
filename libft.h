@@ -80,7 +80,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 char	*ft_strnstr(const char *str, const char *find, size_t len);
 
-char	ft_strrchr(char *str, int c);
+char	*ft_strrchr(char *str, int c);
 
 char	*ft_strtrim(char const *s1, char const *set);
 

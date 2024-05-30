@@ -48,7 +48,7 @@ char	*ft_itoa(int n)
 		result [len -1] = nbr % 10 + '0';
 		nbr /= 10;
 	}
-	if (n < 1)
+	if (n < 0)
 		result[0] = '-';
 	return (result);
 }

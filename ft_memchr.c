@@ -6,7 +6,7 @@
 /*   By: rdalal <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:58:43 by rdalal            #+#    #+#             */
-/*   Updated: 2024/05/20 17:58:46 by rdalal           ###   ########.fr       */
+/*   Updated: 2024/05/29 17:21:12 by rdalal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	*ft_memchr(const void *str, int c, size_t n)
 
 	i = 0;
 	s = (unsigned char *)str;
-	while (s[i] != '\0' && i < n)
+	while (i < n)
 	{
-		if (s[i] == c)
+		if (s[i] == (unsigned char)c)
 			return ((void *)s + i);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

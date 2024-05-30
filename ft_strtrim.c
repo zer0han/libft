@@ -6,7 +6,7 @@
 /*   By: rdalal <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:16:24 by rdalal            #+#    #+#             */
-/*   Updated: 2024/05/22 15:16:26 by rdalal           ###   ########.fr       */
+/*   Updated: 2024/05/29 15:47:31 by rdalal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,42 +26,46 @@ static int	ft_set(char c, const char *set)
 	return (0);
 }
 
-static int	ft_len_set(const char *str, const char *set)
+static size_t	ft_start_trim(const char *s1, const char *set)
 {
-	int	i;
-	int	count_set;
+	size_t	start;
 
-	i = 0;
-	count_set = 0;
-	while (str[i] != '\0')
-	{
-		if (ft_set(str[i], &set[i]))
-			count_set++;
-		i++;
-	}
-	return (count_set);
+	start = 0;
+	while (s1[start] && ft_set(s1[start], set))
+		start++;
+	return (start);
+}
+
+static size_t	ft_end_trim(const char *s1, const char *set, size_t start)
+{
+	size_t	end;
+
+	end = ft_strlen(s1);
+	while (end > start && ft_set(s1[end - 1], set))
+		end--;
+	return (end);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*result;
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	end;
+	size_t	start;
+	size_t	len;
 
 	i = 0;
-	j = 0;
-	result = malloc(sizeof(char) * (ft_strlen(s1)- (ft_len_set(s1, set)) + 1));
+	start = ft_start_trim(s1, set);
+	end = ft_end_trim(s1, set, start);
+	len = end - start;
+	result = (char *)malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
-	while (s1[i] != '\0')
+	while (i < len)
 	{
-		if (ft_set(s1[i], &set[i]))
-		{
-			result[j] = s1[i];
-			j++;
-		}
+		result[i] = s1[start + i];
 		i++;
 	}
-	result[j] = '\0';
+	result[i] = '\0';
 	return (result);
 }

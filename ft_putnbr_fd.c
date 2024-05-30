@@ -6,7 +6,7 @@
 /*   By: rdalal <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 14:33:37 by rdalal            #+#    #+#             */
-/*   Updated: 2024/05/24 14:33:38 by rdalal           ###   ########.fr       */
+/*   Updated: 2024/05/29 15:44:46 by rdalal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar ('-', fd);
 		nbr = -nbr;
 	}
-	if (n > 9)
+	if (nbr >= 10)
 	{
 		ft_putnbr_fd((nbr / 10), fd);
 		ft_putnbr_fd((nbr % 10), fd);

@@ -12,22 +12,20 @@
 
 #include "libft.h"
 
-char	ft_strrchr(char *str, int c)
+char	*ft_strrchr(char *str, int c)
 {
 	size_t	i;
-	size_t	j;
+	char	*last_occ;
 
 	i = 0;
-	j = -1;
+	last_occ = NULL;
 	while (str[i] != '\0')
 	{
-		if (str[i] == c)
-			j = i;
+		if (str[i] == (char)c)
+			last_occ = (char *)&str[i];
 		i++;
 	}
-	if (str [i] == c)
-		j = i;
-	if (j == -1)
-		return (0);
-	return (str[j]);
+	if (str [i] == (char)c)
+		last_occ = (char *)&str[i];
+	return (last_occ);
 }
