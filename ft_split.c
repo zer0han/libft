@@ -12,41 +12,45 @@
 
 #include "libft.h"
 
+static size_t	ft_sep(char c, char sep)
+{
+	if (c == sep || c == '\0')
+		return (1);
+	return (0);
+}
+
 static char	ft_word_count(const char *str, char c)
 {
 	int	i;
 	int	count;
-	int	in_word;
 
 	i = 0;
 	count = 0;
-	in_word = 0;
-	while (str[i])
+	while (str[i] && ft_sep(str[i], c))
+		i++;
+	while (str[i] != '\0')
 	{
-		if (str[i] != c && !in_word)
-		{
-			in_word = 1;
+		if (!ft_sep(str[i], c) && ft_sep(str[i + 1], c))
 			count++;
-		}
-		else if (str[i] == c)
-		{
-			in_word = 0;
-		}
 		i++;
 	}
 	return (count);
 }
 
-static char	*ft_strndup(char const *s, int n)
+static char	*ft_sepstrdup(char const *s, char c)
 {
 	char	*dest;
 	int		i;
+	int		j;
 
-	dest = (char *)malloc(n + 1);
+	j = 0;
+	while (!ft_sep(s[j], c))
+		j++;
+	dest = (char *)malloc(j + 1);
 	if (!dest)
 		return (NULL);
 	i = 0;
-	while (i < n)
+	while (i < j)
 	{
 		dest[i] = s[i];
 		i++;
@@ -73,7 +77,6 @@ char	**ft_split(char const *s, char c)
 {
 	char	**result;
 	int		i;
-	int		start;
 	int		word_index;
 
 	i = 0;
@@ -83,23 +86,18 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	while (s[i])
 	{
-		if (s[i] != c)
-		{
-			start = i;
-			while (s[i] && (s[i] != c))
-				i++;
-			result[word_index] = ft_strndup(s + start, i - start);
-			if (!result[word_index])
-			{
-				free_split(result, word_index);
-				return (NULL);
-			}
-			word_index++;
-		}	
-		else
+		if (ft_sep(s[i], c))
 			i++;
+		else
+		{
+			result[word_index] = ft_sepstrdup(&s[i], c);
+			if (!result[word_index])
+				return (free_split(result, word_index), NULL);
+			i += ft_strlen(result[word_index]);
+			word_index++;
+		}
 	}
-		result[word_index] = NULL;
+	result[word_index] = NULL;
 	return (result);
 }
 
@@ -120,7 +118,7 @@ int main(void) {
             printf("Result[%d]: \"%s\"\n", i, result[i]);
             i++;
         }
-        free_split(result);
+        free_split(result, i);
     } else {
         printf("Memory allocation failed\n");
     }
@@ -136,7 +134,7 @@ int main(void) {
             printf("Result[%d]: \"%s\"\n", i, result[i]);
             i++;
         }
-        free_split(result);
+        free_split(result, i);
     } else {
         printf("Memory allocation failed\n");
     }
@@ -152,7 +150,7 @@ int main(void) {
             printf("Result[%d]: \"%s\"\n", i, result[i]);
             i++;
         }
-        free_split(result);
+        free_split(result, i);
     } else {
         printf("Memory allocation failed\n");
     }
@@ -168,7 +166,7 @@ int main(void) {
             printf("Result[%d]: \"%s\"\n", i, result[i]);
             i++;
         }
-        free_split(result);
+        free_split(result, i);
     } else {
         printf("Memory allocation failed\n");
     }
